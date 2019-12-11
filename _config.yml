@@ -1,0 +1,6 @@
+name: 周宇盛的博客
+description: 周宇盛的博客
+url: "http://jasonzhouu.github.io"
+permalink: /posts/:year-:month-:day-:title
+markdown: kramdown
+highlighter: rouge
