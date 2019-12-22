@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "将操作系统迁移到同一个硬盘"
+title:  "将多个操作系统迁移到同一个硬盘"
 date:   2019-12-21
 tags:   [操作系统]
 ---
@@ -61,15 +61,34 @@ update-grub
 
 ![grub menu interface](https://forum.manjaro.org/uploads/default/optimized/3X/0/e/0e33a9622f1b71643577695f4836e5ebdefcb1fc_2_668x500.png)
 
-4. 将固态硬盘安装到至此UEFI 的新电脑，启动，到此结束。
+### 4. 将固态硬盘安装到至此UEFI 的新电脑，启动，到此结束。
 
 
+## 补充
 ## BIOS, UEFI
-补充一下grub在BIOS和UEFI这两种不同硬件下的不同，这两种硬件下，在启动的第一个阶段有很大不同：
+在BIOS和UEFI这两种硬件下，在启动的第一个阶段有很大不同，因此grub在这两种硬件下也有相应的不同：
 - BIOS启动后，先加载MBR，所以`grub-install`在MBR安装`boot.img`，但MBR太小，只要512bytes，无法做太多事情，所以它只作为跳板，加载后面的程序。也就是MBR与第一个分区的间隙，这个空间也不大，通常只有32KB，但是足够访问`/boot/grub`路径，加载其他模块（用于生成 grub menu、加载操作系统等功能的模块），`grub-install`在这里存放文件被称为`core.img`。[^6]
 - UEFI能够识别GPT分区表和FAT文件系统，启动后会会直接加载ESP分区，而不用像BIOS先从MBR跳转。UEFI从ESP分区加载其中的EFI 应用。`grub-install`在里面存放了grub程序，即`grubx86.efi`，它的作用和BIOS下的`core.img`作用一样，不过是按照EFI的架构进行编译的。[^7]如果只安装了一个操作系统，则不用加载grub，直接加载操作系统。
 
+## Win10
+grub没法直接启动Win10，需要chainload，即传递给Win10自己的EFI程序。安装Win10后，在ESP分区可以看到有Microsoft目录，里面是Windows的bootloader。执行`update-grub`生成的配置文件会处理好这件事情，从而开机进入menu interface时，选择windows系统，会将权限传递给windows的程序。[^8]
 
+查看`grub.cfg`配置文件的chainload部分，可以看到它加载了ESP分区下Microsoft目录的EFI程序：
+```
+menuentry 'Windows Boot Manager (on /dev/sda2)' --class windows --class os $menuentry_id_option 'osprober-efi-6DD8-DACA' {
+        savedefault
+        insmod part_gpt
+        insmod fat
+        set root='hd0,gpt2'
+        if [ x$feature_platform_search_hint = xy ]; then
+          search --no-floppy --fs-uuid --set=root --hint-ieee1275='ieee1275//disk@0,gpt2' --hint-bios=hd0,gpt2 --hint-efi=hd0,gpt2 --hin
+t-baremetal=ahci0,gpt2  6DD8-DACA
+        else
+          search --no-floppy --fs-uuid --set=root 6DD8-DACA
+        fi
+        chainloader /efi/Microsoft/Boot/bootmgfw.efi
+}
+```
 
 ---
 
@@ -77,12 +96,14 @@ update-grub
 
 [^2]: [How does GNU GRUB work](https://0xax.github.io/grub/)
 
-[^3]: [simple menu interface](https://www.gnu.org/software/grub/manual/grub/html_node/Menu-interface.html)
+[^3]: https://www.gnu.org/software/grub/manual/grub/html_node/Menu-interface.html
 
 [^4]: [Grub - Debian Wiki](https://wiki.debian.org/Grub)
 
 [^5]: [GRUB 2 bootloader - Full tutorial](https://www.dedoimedo.com/computers/grub-2.html)
 
-[^6]: [GNU GRUB Manual 2.04](https://www.gnu.org/software/grub/manual/grub/grub.html#Images)
+[^6]: https://www.gnu.org/software/grub/manual/grub/grub.html#Images
 
-[^7]: [E.2.2. GRUB AND THE BOOT PROCESS ON UEFI-BASED X86 SYSTEMS](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/installation_guide/s2-grub-whatis-booting-uefi)
+[^7]: https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/installation_guide/s2-grub-whatis-booting-uefi
+
+[^8]: https://www.gnu.org/software/grub/manual/grub/grub.html#DOS_002fWindows
