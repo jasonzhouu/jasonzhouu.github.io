@@ -61,16 +61,16 @@ update-grub
 
 ![grub menu interface](https://forum.manjaro.org/uploads/default/optimized/3X/0/e/0e33a9622f1b71643577695f4836e5ebdefcb1fc_2_668x500.png)
 
-### 4. 将固态硬盘安装到至此UEFI 的新电脑，启动，到此结束。
+### 4. 将固态硬盘安装到UEFI 的新电脑，启动，到此结束。
 
 
 ## 补充
-## BIOS, UEFI
-在BIOS和UEFI这两种硬件下，在启动的第一个阶段有很大不同，因此grub在这两种硬件下也有相应的不同：
+### 1. BIOS, UEFI
+在BIOS和UEFI这两种硬件下，启动的第一个阶段有很大不同，因此grub在这两种硬件下也有相应的不同：
 - BIOS启动后，先加载MBR，所以`grub-install`在MBR安装`boot.img`，但MBR太小，只要512bytes，无法做太多事情，所以它只作为跳板，加载后面的程序。也就是MBR与第一个分区的间隙，这个空间也不大，通常只有32KB，但是足够访问`/boot/grub`路径，加载其他模块（用于生成 grub menu、加载操作系统等功能的模块），`grub-install`在这里存放文件被称为`core.img`。[^6]
-- UEFI能够识别GPT分区表和FAT文件系统，启动后会会直接加载ESP分区，而不用像BIOS先从MBR跳转。UEFI从ESP分区加载其中的EFI 应用。`grub-install`在里面存放了grub程序，即`grubx86.efi`，它的作用和BIOS下的`core.img`作用一样，不过是按照EFI的架构进行编译的。[^7]如果只安装了一个操作系统，则不用加载grub，直接加载操作系统。
+- UEFI能够识别GPT分区表和FAT文件系统，启动后会会直接加载ESP分区，而不用像BIOS先从MBR跳转。UEFI从ESP分区加载其中的EFI 应用。`grub-install`在里面存放了grub程序，即`grubx86.efi`，它的作用和BIOS下的`core.img`作用一样，不过是按照EFI的接口进行编译的。[^7]如果只安装了一个操作系统，则不用加载grub，UEFI可以直接加载操作系统。
 
-## Win10
+### 2. Win10
 grub没法直接启动Win10，需要chainload，即传递给Win10自己的EFI程序。安装Win10后，在ESP分区可以看到有Microsoft目录，里面是Windows的bootloader。执行`update-grub`生成的配置文件会处理好这件事情，从而开机进入menu interface时，选择windows系统，会将权限传递给windows的程序。[^8]
 
 查看`grub.cfg`配置文件的chainload部分，可以看到它加载了ESP分区下Microsoft目录的EFI程序：
