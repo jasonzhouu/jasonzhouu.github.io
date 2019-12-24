@@ -61,6 +61,10 @@ update-grub
 
 ![grub menu interface](https://forum.manjaro.org/uploads/default/optimized/3X/0/e/0e33a9622f1b71643577695f4836e5ebdefcb1fc_2_668x500.png)
 
+另外：
+- 检查`/etc/default/grub`中是否用到的UUID是否有错，如果有错，则先改正然后执行`update-grub`命令；
+- 检查`/etc/fstab`是否有错。
+
 ### 4. 将固态硬盘安装到UEFI 的新电脑，启动，到此结束。
 
 
@@ -90,13 +94,23 @@ t-baremetal=ahci0,gpt2  6DD8-DACA
 }
 ```
 
+## 反思
+
+相比较而言，2种做事方式：
+
+- 定目标-》摸索-》遇到问题-》查文档-》再摸索-》总结
+
+- 定目标-》查文档-》定方案-》摸索-》总结
+
+后一种可能效率要高得多。
+
 ---
 
 [^1]: [How can I reinstall GRUB to the EFI partition?](https://askubuntu.com/a/831241/798614)
 
 [^2]: [How does GNU GRUB work](https://0xax.github.io/grub/)
 
-[^3]: https://www.gnu.org/software/grub/manual/grub/html_node/Menu-interface.html
+[^3]: [https://www.gnu.org/software/grub/manual/grub/html_node/Menu-interface.html ](https://www.gnu.org/software/grub/manual/grub/html_node/Menu-interface.html)
 
 [^4]: [Grub - Debian Wiki](https://wiki.debian.org/Grub)
 
@@ -104,6 +118,6 @@ t-baremetal=ahci0,gpt2  6DD8-DACA
 
 [^6]: https://www.gnu.org/software/grub/manual/grub/grub.html#Images
 
-[^7]: https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/installation_guide/s2-grub-whatis-booting-uefi
+[^7]: [https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/installation_guide/s2-grub-whatis-booting-uefi](https://access.redhat.com/documentation/en-us/red_hat_enterprise_linux/6/html/installation_guide/s2-grub-whatis-booting-uefi)
 
 [^8]: https://www.gnu.org/software/grub/manual/grub/grub.html#DOS_002fWindows

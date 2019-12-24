@@ -34,7 +34,7 @@ tags:   [css]
 
 > `position: absolute` means something like "use `top`, `right`, `bottom`, `left` to position yourself in relation to the nearest ancestor who has `position: absolute` or `position: relative`."
 >
-> https://stackoverflow.com/a/10487329/7218912
+> [https://stackoverflow.com/a/10487329/7218912](https://stackoverflow.com/a/10487329/7218912)
 
 - 设置`position: absolute;`后还得设置`width: 100%;`，否则无法占据屏幕宽度。
 

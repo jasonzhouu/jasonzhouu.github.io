@@ -32,7 +32,7 @@ h1 {
 h2 {
     font-size: 1.2em;
     font-family: "Palatino Linotype", "Book Antiqua", Palatino, Helvetica, STKaiti, SimSun, serif;
-    margin-top: 40px;
+    margin-top: 20px;
     margin-bottom: 30px;
     border-bottom: 1px LightGrey solid;
     width: 98%;
@@ -170,14 +170,16 @@ a.footnote {
 }
 
 
-/* Home styles */
+/* 主页的文章列表 */
 /* ----------------------------------------------------------*/
 
 .home h1 { margin-bottom: 25px; }
 
 .posts { list-style-type: none; }
 
-.posts li { margin-bottom: 30px; }
+.posts li {
+    margin-bottom: 30px;
+}
 
 .posts .post-link {
   font-size: 24px;
@@ -207,24 +209,12 @@ a.footnote {
 
 .post-content > * { margin: 20px 0; }
 
-
-.post-content h1,
-.post-content h2,
-.post-content h3,
-.post-content h4,
-.post-content h5,
-.post-content h6 {
-  line-height: 1;
-  margin: 40px 0 20px;
-}
-
 .post-content blockquote {
   border-left: 4px solid #e8e8e8;
   padding-left: 20px;
   font-size: 18px;
   opacity: .6;
   letter-spacing: -1px;
-  font-style: italic;
   margin: 30px 0;
 }
 
