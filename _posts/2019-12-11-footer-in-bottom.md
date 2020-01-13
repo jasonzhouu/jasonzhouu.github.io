@@ -18,7 +18,7 @@ tags:   [css]
 
 - 在 content 和 footer 外创建一个 container，footer 放在 container 末尾；
 - 当内容不够填充 viewport 的高度的时候，将 container 的高度设置为 viewport 的 100%，从而 footer 处于 container 的底部的同时，也处于 viewport 的底部；
-- content 下面设置 padding，以免和 footer 重叠。
+- content 下面设置 padding ，留出一些空白，以免和 footer 重叠。
 
 ## 代码
 

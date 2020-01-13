@@ -5,11 +5,15 @@ layout: default
 
   <header class="post-header">
     <h1>{{ page.title }}</h1>
-    <p class="meta">创建时间：{{ page.date | date: "%Y-%m-%d" }}{% if page.tags %} 标签： {{ page.tags }}{% endif %}</p>
   </header>
 
   <article class="post-content">
   {{ content }}
   </article>
+  <div class="meta">
+      创建时间：{{ page.date | date: "%Y-%m-%d" }}
+      <br>
+      {% if page.tags %} 标签： {{ page.tags }}{% endif %}
+  </div>
 
 </div>
