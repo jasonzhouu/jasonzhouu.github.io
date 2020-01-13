@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Vue 组建的多种表达方式"
+title:  "Vue 组件的多种表达方式"
 date:   2020-01-13
 tags:   [前端]
 ---
@@ -80,9 +80,13 @@ export default {
 }
 ```
 
+参考：
+
+[https://cn.vuejs.org/v2/guide/components-registration.html#%E5%B1%80%E9%83%A8%E6%B3%A8%E5%86%8C](https://cn.vuejs.org/v2/guide/components-registration.html#局部注册)
+
 ## 3. 单文件组件
 
-前面2种原生的Javascript的写法，将html用字符串的新式书写，没有高亮。
+前面2种原生的Javascript的写法，将html用字符串的形式书写，没有高亮。
 
 **单文件组件**将vue组建写在单独的文件中，包含js, html模板，css。然后用webpack/browserify构建工具将其转成浏览器能识别的原生 Javascript。
 
@@ -91,3 +95,15 @@ export default {
 由于有构建工具的帮助，语言也更加灵活：
 
 ![带预处理器的单文件组件的示例 (../assets/2020-01-13-vue-component/vue-component-with-preprocessors-1578895294291.png)](https://cn.vuejs.org/images/vue-component-with-preprocessors.png)
+
+<iframe
+     src="https://codesandbox.io/embed/o29j95wx9?fontsize=14&hidenavigation=1&theme=dark"
+     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
+     title="Simple Todo App with Vue"
+     allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
+     sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
+   ></iframe>
+
+参考：
+
+https://cn.vuejs.org/v2/guide/single-file-components.html
