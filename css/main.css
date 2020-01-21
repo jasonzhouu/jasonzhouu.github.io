@@ -41,7 +41,6 @@ body {
 h1 {
     font-size: 1.6em;
     font-family: "Palatino Linotype", "Book Antiqua", Palatino, Helvetica, STKaiti, SimSun, serif;
-    /* padding-top: 30px; */
     margin: 50px 0 40px 0;
     padding: 5px;
     border-bottom: 2px solid LightGrey;
@@ -207,6 +206,8 @@ blockquote {
     border-left: 5px lightgrey solid;
     padding-left: 15px;
     margin-left: 20px;
+    margin-top: 1em;
+    margin-bottom: 1em;
     background: #f4f4f4;
 }
 
@@ -253,6 +254,10 @@ pre {
 }
 
 .post code { padding: 1px 5px; }
+
+.post blockquote code {
+    background-color: #ddd;
+}
 
 .post ul,
 .post ol { margin-left: 1.35em; }
