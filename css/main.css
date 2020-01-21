@@ -17,6 +17,29 @@ body {
   min-height: 100vh;
 }
 
+/* 放置链接/文字溢出，参考：
+ * https://css-tricks.com/snippets/css/prevent-long-urls-from-breaking-out-of-container/
+*/
+body {
+
+    /* These are technically the same, but use both */
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+
+    -ms-word-break: break-all;
+    /* This is the dangerous one in WebKit, as it breaks things wherever */
+    word-break: break-all;
+    /* Instead use this non-standard one: */
+    word-break: break-word;
+
+    /* Adds a hyphen where the word breaks, if supported (No Blink) */
+    -ms-hyphens: auto;
+    -moz-hyphens: auto;
+    -webkit-hyphens: auto;
+    hyphens: auto;
+
+}
+
 h1 {
     font-size: 1.6em;
     font-family: "Palatino Linotype", "Book Antiqua", Palatino, Helvetica, STKaiti, SimSun, serif;
@@ -46,13 +69,26 @@ a         { color: #2a7ae2; text-decoration: none; }
 a:hover   { color: #000; text-decoration: underline; }
 a:visited { color: #205caa; }
 
+/* https://gist.github.com/reyesyang/5882836 */
+/* 防止链接文字溢出，多出来的文字用省略号 */
+/* a { */
+/*     display: inline-block; */
+/*     text-overflow: ellipsis; */
+/*     width: 100%; */
+/*     white-space: nowrap; */
+/*     overflow: hidden; */
+/* } */
+
+
+
+
 /* Utility */
 
 .wrap:before,
 .wrap:after { content:""; display:table; }
 .wrap:after { clear: both; }
 .wrap {
-  max-width: 800px;
+  max-width: 1000px;
   padding: 0 30px;
   margin: 0 auto;
   zoom: 1;
@@ -219,8 +255,11 @@ table, th, td {
 
 /* 图片不超过屏幕宽度 */
 img {
-  width: 90%;
-  border: 2px solid black;
+    border-radius: 5px;
+    box-shadow: 0px 10px 20px #ccc;
+    margin: 20px;
+  max-width: 90%;
+/*  border: 2px solid black;*/
 }
 
 /* 代码不超过外边框 */

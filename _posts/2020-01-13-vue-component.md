@@ -54,7 +54,7 @@ new Vue({
 })
 ```
 
-**局部注册的组件在其子组件中\*不可用\***。例如，如果你希望 `ComponentA` 在 `ComponentB` 中可用，则你需要这样写：
+局部注册的组件在其子组件中**不可用**。例如，如果你希望 `ComponentA` 在 `ComponentB` 中可用，则你需要这样写：
 
 ```javascript
 var ComponentA = { /* ... */ }
@@ -96,14 +96,13 @@ export default {
 
 ![带预处理器的单文件组件的示例 (../assets/2020-01-13-vue-component/vue-component-with-preprocessors-1578895294291.png)](https://cn.vuejs.org/images/vue-component-with-preprocessors.png)
 
-<iframe
-     src="https://codesandbox.io/embed/o29j95wx9?fontsize=14&hidenavigation=1&theme=dark"
-     style="width:100%; height:500px; border:0; border-radius: 4px; overflow:hidden;"
-     title="Simple Todo App with Vue"
-     allow="geolocation; microphone; camera; midi; vr; accelerometer; gyroscope; payment; ambient-light-sensor; encrypted-media; usb"
-     sandbox="allow-modals allow-forms allow-popups allow-scripts allow-same-origin"
-   ></iframe>
+示例（点击图片进入在线编辑器）：
+
+[![image-20200113142644360](../assets/2020-01-13-vue-component/image-20200113142644360.png)](https://codesandbox.io/s/o29j95wx9?fontsize=14&hidenavigation=1&theme=dark)
+
 
 参考：
 
-https://cn.vuejs.org/v2/guide/single-file-components.html
+- https://cn.vuejs.org/v2/guide/single-file-components.html
+- https://juejin.im/post/5c91e54f5188252d7c216627#heading-0
+
