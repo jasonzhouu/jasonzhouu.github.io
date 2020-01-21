@@ -40,6 +40,8 @@ tags:   [css]
 
 - 如果`#page-container`不设置 `min-height: 100vh;`，那么当内容不够填充 viewport 时，footer 将处于 viewport 中间：![file:///tmp/tmp4b7Poo/1.png](../assets/2019-12-11-footer-in-bottom/1.png)
 
+- 如果`#page-container`不设置 `min-height: 100vh;`，而是设置`height: 100vh`，那么当`#content-wrap`的高度超出100vh时，则会溢出`#page-container`的边界，与`#page-container`底部的footer重叠。
+
 - `#content-wrap`设置 `padding-bottom: 2rem; `，与 `#footer`的 height 高度刚好吻合，从而不互相覆盖。否则，由于`#footer`脱离 flow，当 `#content-wrap` 足够填充整个 viewport 时，`#content-wrap` 的底部将与 `#footer` 重叠。![image-20191211213558973](../assets/2019-12-11-footer-in-bottom/image-20191211213558973.png)
 
 ---
