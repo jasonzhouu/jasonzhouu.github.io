@@ -13,7 +13,7 @@ body {
   font-weight: 300;
   background-color: #fdfdfd;
   position: relative;
-  height: 100vh;
+  min-height: 100vh;
 }
 
 /* 放置链接/文字溢出，参考：
