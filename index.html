@@ -7,8 +7,10 @@ layout: default
   <ul class="posts">
     {% for post in site.posts %}
       <li>
-        <span class="post-date">{{ post.date | date: "%Y-%m-%d" }}</span>
-        <a class="post-link" href="{{ post.url }}">{{ post.title }}</a>
+        <a class="post-link" href="{{ post.url }}">
+            <span class="post-date">{{ post.date | date: "%Y年%m月%d日" }}</span>
+            {{ post.title }}
+        </a>
       </li>
     {% endfor %}
   </ul>

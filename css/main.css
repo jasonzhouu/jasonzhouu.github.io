@@ -197,27 +197,30 @@ a.footnote {
 /* 主页的文章列表 */
 /* ----------------------------------------------------------*/
 
-.home h1 { margin-bottom: 25px; }
-
 .posts {
-    list-style-type: none;
-    padding-top: 20px;
+  list-style-type: none;
+  padding-top: 20px;
 }
 
-.posts li {
-    margin-bottom: 30px;
-}
-
-.posts .post-link {
-  font-size: 24px;
-  letter-spacing: -1px;
-  line-height: 1;
-}
-
-.posts .post-date {
+.posts li a {
   display: block;
-  font-size: 15px;
-  color: #818181;
+  text-decoration: none;
+  font-size: 24px;
+  padding: 15px 20px;
+  border: 1px solid #ddd;
+  margin-bottom: -1px;
+  font-family: "Palatino Linotype", "Book Antiqua", Palatino, Helvetica, STKaiti, SimSun, serif;
+}
+
+
+.posts li a:hover {
+  background-color: #eee;
+}
+
+.posts .post-link .post-date {
+  display: block;
+  font-size: 17px;
+  color: darkgray;
 }
 
 
@@ -260,6 +263,7 @@ img {
     margin: 20px auto;
     display: block;
     max-width: 90%;
+    max-height: 60vh;
 /*  border: 2px solid black;*/
 }
 
